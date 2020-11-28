@@ -1,0 +1,4 @@
+airtype 
+    add button adds 2 rows
+    add button adds to all rows not just instance of component state
+    
