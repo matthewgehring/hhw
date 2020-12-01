@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import Airtype from './Airtype/Airtype';
 
-class Air extends Component {
-  render() {
+const Air = () => {
+
     return (
       <div>
         <Airtype title={'Latex'} key={1} />
@@ -13,7 +13,6 @@ class Air extends Component {
       </div>
       
     );
-  }
 }
 
 export default Air;

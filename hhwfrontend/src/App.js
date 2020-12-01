@@ -5,6 +5,8 @@ import Register from './components/Register/Register';
 import Air from './components/Air/Air';
 import Home from './components/Home/Home';
 import Labpack from './components/Labpack/Labpack';
+import Drum from './components/Drum/Drum';
+import CreateDrum from './components/CreateDrum/CreateDrum';
 import './App.css';
 
 import {
@@ -61,17 +63,13 @@ class App extends Component {
                 </li>
               </ul>
             </nav>
-            <switch>
-              <Route path ="/labpack">
-                <Labpack />
-              </Route>
-              <Route path ="/air">
-                <Air />
-              </Route>
-              <Route exact={true} path ="/">
-                <Home />
-              </Route>
-            </switch>
+            <Switch>
+              <Route path ="/labpack" exact component={Labpack}/>
+              <Route path ="/air" component={Air}/>
+              <Route path="/labpack/:id" component={Drum}/>
+              <Route path="/createdrum" component={CreateDrum}/>
+              <Route path ="/" exact component={Home}/>
+            </Switch>
           </div>
         </Router>
         }
