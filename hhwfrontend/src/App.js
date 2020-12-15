@@ -11,6 +11,7 @@ import './App.css';
 
 import {
   BrowserRouter as Router,
+  NavLink,
   Switch,
   Route,
   Link
@@ -42,24 +43,26 @@ class App extends Component {
     const {route, isSignedIn} = this.state;
     return (
       <div className="App">
-        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         {route === 'signin' ?
           <Signin onRouteChange={this.onRouteChange}/>
         : route === 'register' ?
           <Register onRouteChange={this.onRouteChange} />
         :
         <Router>
-          <div>
+          <div class={"primary-header"}>
             <nav>
               <ul> 
                 <li>
-                  <Link to="/">Home</Link>
+                  <NavLink to="/">Home</NavLink>
                 </li>
                 <li>
-                  <Link to="/air">Air Permit</Link>
+                  <NavLink to="/air">Air Permit</NavLink>
                 </li>
                 <li>
-                  <Link to="/labpack">labpack</Link>
+                  <NavLink to="/labpack">Labpack</NavLink>
+                </li>
+                <li className="navigation">
+                  <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                 </li>
               </ul>
             </nav>

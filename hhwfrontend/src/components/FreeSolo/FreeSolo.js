@@ -8,63 +8,31 @@ import {
     AutocompleteRenderInputParams,
   } from 'formik-material-ui-lab';
 
-const filter = createFilterOptions();
 
 export default function FreeSolo({label, ...props}) {
-    console.log("props", props);
-    const [value, setValue] = React.useState(null);
     const [field, meta] = useField(props);
-    console.log("field", field);
-    console.log("meta", meta);
-    return (
-        <Field
-            name= {field.name}
-            component={Autocomplete}
-            freeSolo
-            autoSelect
-            options={drumTypes}
-            getOptionLabel={(option: any) => option.title || option}
-            style={{width: 300,
-                    paddingTop: "4px"}}
-            freeSolo
-            autoSelect
-            // onChange={(event, newValue) => {
-            //     console.log(newValue);
-            //     if (typeof newValue === 'string') {
-            //     setValue({
-            //         title: newValue,
-            //     });
-            //     } else if (newValue && newValue.inputValue) {
-            //     // Create a new value from the user input
-            //     setValue({
-            //         title: newValue.inputValue,
-            //     });
-            //     } else {
-            //     setValue(newValue);
-            //     }
-            // }}
-        // filterOptions={(options, params) => {
-        //     const filtered = filter(options, params);
 
-        //     // Suggest the creation of a new value
-        //     if (params.inputValue !== '') {
-        //     filtered.push({
-        //         inputValue : params.inputValue,
-        //         title: `Add "${params.inputValue}"`,
-        //     });
-        //     }
-        //     return filtered;
-        // }}
-            renderInput={(params: AutocompleteRenderInputParams) => (
-                <TextField
-                {...params}
-                error={meta.touched['autocomplete'] && !!meta.errors['autocomplete']}
-                helperText={meta.touched['autocomplete'] && meta.errors['autocomplete']}
-                label={label}
-                variant="outlined"
-                />
-            )}
-        />
+    return (
+            <Field
+                name= {field.name}
+                component={Autocomplete}
+                id="combo-box-demo"
+                freeSolo
+                autoSelect
+                options={drumTypes}
+                getOptionLabel={(option: any) => option.title || option}
+                style={{width: 200}}
+                renderInput={(params: AutocompleteRenderInputParams) => (
+                    <TextField
+                    {...params}
+                    error={meta.touched['autocomplete'] && !!meta.errors['autocomplete']}
+                    helperText={meta.touched['autocomplete'] && meta.errors['autocomplete']}
+                    label={label}
+                    margin="normal"
+                    variant="outlined"
+                    />
+                )}
+            />
   );
 }
 
