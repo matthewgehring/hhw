@@ -13,7 +13,8 @@ const MyRadio = ({label, ...props }) => {
     )
 }
 
-const CreateDrum = () => {
+const CreateDrum = (props) => {
+    
     return (
         <div className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         <div className="pa4 black-80">
@@ -28,7 +29,9 @@ const CreateDrum = () => {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(data, null, 2)
                 })
+                props.history.push('/labpack');
                 setSubmitting(false);
+
             }}
             >
             {({values, isSubmitting, touched, errors, setFieldValue}) => (

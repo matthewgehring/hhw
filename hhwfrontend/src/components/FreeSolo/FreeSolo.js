@@ -20,7 +20,7 @@ export default function FreeSolo({label, ...props}) {
                 freeSolo
                 autoSelect
                 options={drumTypes}
-                getOptionLabel={(option: any) => option.title || option}
+                getOptionLabel={(option: any) => option || option}
                 style={{width: 200}}
                 renderInput={(params: AutocompleteRenderInputParams) => (
                     <TextField
@@ -37,12 +37,12 @@ export default function FreeSolo({label, ...props}) {
 }
 
 const drumTypes = [
-    {title: "Organic Poison"},
-    {title: "Dioxin Precusor"},
-    {title: "Organic Acid"},
-    {title: "Organic Base"},
-    {title: "Inorganic Acid"},
-    {title: "Inorganic Base"},
-    {title: "Hypochlorites"},
-    {title: "Neutral Oxidizer"}
+    "Organic Poison",
+    "Dioxin Precusor",
+    "Organic Acid",
+    "Organic Base",
+    "Inorganic Acid",
+    "Inorganic Base",
+    "Hypochlorites",
+    "Neutral Oxidizer"
 ]
