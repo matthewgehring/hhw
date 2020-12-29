@@ -5,6 +5,7 @@ import Register from './components/Register/Register';
 import Air from './components/Air/Air';
 import Home from './components/Home/Home';
 import Labpack from './components/Labpack/Labpack';
+import Test from './components/Test/Test';
 import Drum from './components/Drum/Drum';
 import CreateDrum from './components/CreateDrum/CreateDrum';
 import './App.css';
@@ -49,7 +50,7 @@ class App extends Component {
           <Register onRouteChange={this.onRouteChange} />
         :
         <Router>
-          <div class={"primary-header"}>
+          <div className={"primary-header"}>
             <nav>
               <ul> 
                 <li>
@@ -61,6 +62,9 @@ class App extends Component {
                 <li>
                   <NavLink to="/labpack">Labpack</NavLink>
                 </li>
+                <li>
+                  <NavLink to="/test">Test</NavLink>
+                </li>
                 <li className="navigation">
                   <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
                 </li>
@@ -68,6 +72,7 @@ class App extends Component {
             </nav>
             <Switch>
               <Route path ="/labpack" exact component={Labpack}/>
+              <Route path ="/test" exact component={Test}/>
               <Route path ="/air" component={Air}/>
               <Route path="/labpack/:id" component={Drum}/>
               <Route path="/createdrum" component={CreateDrum}/>

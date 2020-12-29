@@ -4,8 +4,6 @@ import {TextField, Button, Radio, FormControlLabel} from "@material-ui/core";
 import FreeSolo from "../FreeSolo/FreeSolo";
 import Datepicker from "../Datepicker/Datepicker";
 
-
-
 const MyRadio = ({label, ...props }) => {
     const [field] = useField(props);
     return (
@@ -29,6 +27,7 @@ const CreateDrum = (props) => {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(data, null, 2)
                 })
+                console.log(props);
                 props.history.push('/labpack');
                 setSubmitting(false);
 
