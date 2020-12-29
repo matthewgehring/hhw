@@ -1,27 +1,12 @@
 import React from "react";
-import { Formik, Field, Form, useField } from "formik";
 import {TextField, Button, Radio, RadioGroup, FormControlLabel} from "@material-ui/core";
 import FreeSolo from "../FreeSolo/FreeSolo";
 import Datepicker from "../Datepicker/Datepicker";
 import { useForm, Controller, useController } from "react-hook-form";
-// for creating custom components with useController
-// const MyRadio = ({name, control, label}) => {
-//     const {
-//         field: { ref, ...inputProps },
-//         meta: { invalid, isTouched, isDirty },
-//       } = useController({
-//         name,
-//         control,
-//         rules: { required: true },
-//         defaultValue: "",
-//       });
-    
-//     return <FormControlLabel {...inputProps} control={<Radio />} label={label} />;
-// }
 
 const CreateDrum = (props) => {
     const [isSubmitting, setIsSubmitting] = React.useState(false);
-    const {register, handleSubmit, handleChange, watch, errors, control, reset} = useForm();
+    const {register, handleSubmit, control, setValue} = useForm();
 
     const onSubmit = (data) => {
             setIsSubmitting(true);
@@ -33,6 +18,10 @@ const CreateDrum = (props) => {
             console.log(data);
             //props.history.push('/labpack');
             setIsSubmitting(false);
+    }
+
+    const handleChange = (ev) => {
+        setValue(ev.target.name, ev.target.value);
     }
 
     
@@ -51,22 +40,30 @@ const CreateDrum = (props) => {
                 </div>
                 <div>Drum Size:</div>
                 <div>
-                <div>
-                <RadioGroup row aria-label="Drum Size:" name="drumSize" onChange={handleChange}>
-                        <FormControlLabel name="size" type="radio" value="5" label="5" control={<Radio />} />
-                        <FormControlLabel name="size" type="radio" value="15" label="5" control={<Radio />} />
-                        <FormControlLabel name="size" type="radio" value="51" label="5" control={<Radio />} />
-                        <FormControlLabel name="size" type="radio" value="52" label="5" control={<Radio />} />
-                </RadioGroup>
+                <Controller as = {
+                    <RadioGroup row aria-label="Drum Size:" name="drumSize" onChange={handleChange} ref={register}>
+                            <FormControlLabel name="size" type="radio" value="5" label="5" control={<Radio />} />
+                            <FormControlLabel name="size" type="radio" value="16" label="16" control={<Radio />} />
+                            <FormControlLabel name="size" type="radio" value="30" label="30" control={<Radio />} />
+                            <FormControlLabel name="size" type="radio" value="55" label="55" control={<Radio />} />
+                    </RadioGroup>
+                }
+                name="drumSize"
+                defaultValue = {'55'}
+                control={control}
+              />
                 </div>
-                <div>
-                    
-
-                </div>
-                </div>
-                <div> <div>Drum Type:</div>
-                    <Radio name="type" type="radio" value="DF" label="DF" ref={register}/>
-                    <Radio name="type" type="radio" value="DM " label="DM" ref={register}/>
+                <div> <div>Drum Material:</div>
+                <Controller as = {
+                    <RadioGroup row aria-label="Drum Size:" name="drumMaterial" onChange={handleChange} ref={register}>
+                            <FormControlLabel name="type" type="radio" value="DF" label="DF" control={<Radio />} />
+                            <FormControlLabel name="type" type="radio" value="DM " label="DM" control={<Radio />} />
+                    </RadioGroup>
+                }
+                name={"drumMaterial"}
+                defaultValue = {"DF"}
+                control={control}
+              />
                 </div>
                 <div>
                     <Button disabled={!!isSubmitting} type="submit">submit</Button>
